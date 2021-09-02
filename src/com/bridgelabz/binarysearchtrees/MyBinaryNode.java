@@ -23,4 +23,15 @@ public class MyBinaryNode<K extends Comparable<K>>
 		}
 		return current;
 	}
+	
+	public int getSize() {
+
+		return getSizeRecursively(root);
+	}
+
+	private int getSizeRecursively(INode<K> current) {
+
+
+		return (current == null) ? 0 : 1 + getSizeRecursively(current.left) + getSizeRecursively(current.right);
+	}
 }
