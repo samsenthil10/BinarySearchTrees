@@ -8,7 +8,7 @@ public class MyBinaryNode<K extends Comparable<K>>
 	public void add(K key) {
 		this.root=this.addRecursively(root,key);
 	}
-	
+
 	private INode<K> addRecursively(INode<K> current, K key) {
 		if(current==null)
 			return new INode<>(key);
@@ -23,7 +23,7 @@ public class MyBinaryNode<K extends Comparable<K>>
 		}
 		return current;
 	}
-	
+
 	public int getSize() {
 
 		return getSizeRecursively(root);
@@ -31,7 +31,23 @@ public class MyBinaryNode<K extends Comparable<K>>
 
 	private int getSizeRecursively(INode<K> current) {
 
-
 		return (current == null) ? 0 : 1 + getSizeRecursively(current.left) + getSizeRecursively(current.right);
+	}
+
+	public boolean search(K key) {
+
+		INode<K> current = root;
+		while (current != null) {
+			if ((current.key.compareTo(key)) < 0) {
+				current = current.right;
+			} 
+			else if ((current.key.compareTo(key)) > 0) {
+				current = current.left;
+			} 
+			else {
+				return true;
+			}
+		}
+		return false;
 	}
 }
